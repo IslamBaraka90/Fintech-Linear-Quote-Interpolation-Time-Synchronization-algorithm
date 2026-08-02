@@ -1,0 +1,29 @@
+{
+  "name": "fintech-linear-quote",
+  "version": "0.1.0",
+  "description": "Bitemporal linear quote interpolation with an explicit knowledge cutoff, leave-one-out error measurement, and an engine that waits until a value is knowable.",
+  "keywords": [
+    "fintech",
+    "interpolation",
+    "bitemporal",
+    "point-in-time",
+    "lookahead-bias",
+    "time-synchronization",
+    "market-data"
+  ],
+  "homepage": "https://github.com/IslamBaraka90/Fintech-Linear-Quote-Interpolation-Time-Synchronization-algorithm",
+  "license": "MIT",
+  "author": "The Fintech Builder",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": { ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" } },
+  "files": ["dist", "README.md", "LICENSE"],
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "node --experimental-strip-types --test \"test/*.test.ts\"",
+    "example": "node --experimental-strip-types examples/quickstart.ts"
+  },
+  "devDependencies": { "typescript": "^5.7.0" }
+}

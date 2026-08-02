@@ -1,0 +1,15 @@
+{
+  "quotes": [
+    {"instrument":"A","venue":"X","session_id":"S","event_time":"2026-01-01T00:00:00.000Z","available_time":"2026-01-01T00:00:00.100Z","bid":99,"ask":101},
+    {"instrument":"A","venue":"X","session_id":"S","event_time":"2026-01-01T00:00:02.000Z","available_time":"2026-01-01T00:00:02.120Z","bid":101,"ask":103}
+  ],
+  "max_gap_ms": 2000,
+  "targets": [
+    {"instrument":"A","venue":"X","session_id":"S","target_time":"2026-01-01T00:00:01.000Z","evaluation_time":"2026-01-01T00:00:01.000Z"},
+    {"instrument":"A","venue":"X","session_id":"S","target_time":"2026-01-01T00:00:01.000Z","evaluation_time":"2026-01-01T00:00:02.120Z"},
+    {"instrument":"A","venue":"X","session_id":"S","target_time":"2026-01-01T00:00:00.000Z","evaluation_time":"2026-01-01T00:00:00.000Z"},
+    {"instrument":"A","venue":"X","session_id":"S","target_time":"2026-01-01T00:00:00.000Z","evaluation_time":"2026-01-01T00:00:00.100Z"},
+    {"instrument":"A","venue":"X","session_id":"S","target_time":"2025-12-31T23:59:59.000Z","evaluation_time":"2026-01-01T00:00:03.000Z"}
+  ],
+  "expected_statuses": ["right_not_available", "linear", "exact_not_available", "exact", "unavailable"]
+}

@@ -1,0 +1,43 @@
+repo_slug: "Fintech-Linear-Quote-Interpolation-Time-Synchronization-algorithm"
+github: "IslamBaraka90/Fintech-Linear-Quote-Interpolation-Time-Synchronization-algorithm"
+visibility: "public"
+
+derives_from:
+  topic_id: "D01-F03-A02"
+  title: "Linear Quote Interpolation"
+  domain_id: "D01"
+  domain: "Market Data Engineering"
+  family_id: "D01-F03"
+  family: "Time Synchronization"
+  source_path: "algorithms/domains/D01-market-data-engineering/D01-F03-time-synchronization/D01-F03-A02-linear-quote-interpolation"
+
+article_url: "https://thefintechbuilder.com/market-data-engineering/time-synchronization/linear-quote-interpolation/"
+languages: ["python", "typescript"]
+npm_subpath: "fintech-algorithms/market-data-engineering/time-synchronization/linear-quote-interpolation"
+
+# Split model: the reader keeps the teaching snippet; this repo owns the interpolator
+# plus the LEAKAGE surface (interpolation_error, lookahead_cost, gap_profile,
+# status_summary) and the PendingInterpolator engine.
+#
+# The surface was chosen because the tutorial answers "what is the interpolated value"
+# and leaves the question that decides whether you may use it:
+#   - interpolation_error -> leave-one-out validation, so "is linear good enough here"
+#                            is answered from the caller's own data rather than assumed
+#   - lookahead_cost      -> what respecting available_time actually cost, in targets
+#                            and in wait_ms
+#   - gap_profile         -> where max_gap_ms should sit, read off the observed spacing
+#
+# The engine is a PENDING queue rather than a streaming sampler, because linear
+# interpolation cannot stream: it needs the right-hand endpoint, which is in the
+# future. Holding the target open is the only honest live behaviour.
+#
+# TWO UPSTREAM DIVERGENCES handled here, both still present in the monorepo source and
+# therefore in the generated npm package:
+#   1. `first_knowable_at` is computed with max() over the raw timestamp STRINGS.
+#      "…00.500Z" sorts before "…00Z" lexicographically while being later in fact, so
+#      a mixed-precision feed picks the wrong endpoint. This repo compares on the
+#      parsed clock.
+#   2. Prices go through float(quote["bid"]), so Python accepts "100.5" where the
+#      TypeScript port rejects a string — the same input, two answers. Both ports here
+#      require a real number.
+model: "split"

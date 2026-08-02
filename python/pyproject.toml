@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fintech-linear-quote"
+version = "0.1.0"
+description = "Bitemporal linear quote interpolation with an explicit knowledge cutoff, leave-one-out error measurement, and an engine that waits until a value is knowable."
+readme = "../README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "The Fintech Builder" }]
+keywords = [
+  "fintech",
+  "interpolation",
+  "bitemporal",
+  "point-in-time",
+  "lookahead-bias",
+  "time-synchronization",
+  "market-data",
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Financial and Insurance Industry",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Office/Business :: Financial :: Investment",
+  "Typing :: Typed",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7.4"]
+
+[project.urls]
+Article = "https://thefintechbuilder.com/market-data-engineering/time-synchronization/linear-quote-interpolation/"
+Homepage = "https://github.com/IslamBaraka90/Fintech-Linear-Quote-Interpolation-Time-Synchronization-algorithm"
+Index = "https://github.com/IslamBaraka90/Fintech-Algorithms-Awesome"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src", "tests"]
