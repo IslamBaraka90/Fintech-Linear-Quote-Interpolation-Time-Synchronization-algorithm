@@ -6,7 +6,6 @@ build-backend = "setuptools.build_meta"
 name = "fintech-linear-quote"
 version = "0.1.0"
 description = "Bitemporal linear quote interpolation with an explicit knowledge cutoff, leave-one-out error measurement, and an engine that waits until a value is knowable."
-readme = "../README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
 authors = [{ name = "The Fintech Builder" }]
